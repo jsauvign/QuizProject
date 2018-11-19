@@ -1,7 +1,8 @@
 package edu.unca.csci201;
 
 public class MultipleChoiceQuestion implements Question {
-
+	String text = null;
+	String correctAnswer = null;
 	@Override
 	public String getTheQuestionText() {
 		// TODO Auto-generated method stub
