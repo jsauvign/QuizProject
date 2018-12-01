@@ -50,6 +50,8 @@ public class Quiz {
 		System.out.println();
 		System.out.println("The corrects answer is:  " + wrongQuestions[k].getCorrectAnswer());
 		System.out.println("press enter to continue");
+		System.out.println();
+		System.out.println();
 		String waitmore = scan.nextLine();
 		}
 		System.out.println();
