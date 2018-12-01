@@ -1,12 +1,12 @@
 package edu.unca.csci201;
 
 public class TrueFalseQuestion implements Question {
-private static String text;
-private static String correctAnswer;
+private String text;
+private String correctAnswer;
 
 public TrueFalseQuestion(String text, String correctAnswer) {
-	TrueFalseQuestion.text = text;
-	TrueFalseQuestion.correctAnswer = correctAnswer;
+	this.text = text;
+	this.correctAnswer = correctAnswer;
 }
 
 	public String getTheQuestionText() {

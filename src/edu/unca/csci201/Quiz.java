@@ -2,33 +2,29 @@ package edu.unca.csci201;
 
 import java.util.Scanner;
 
-//This class manages up to 25 Question objects
+//This class manages Question objects
 public class Quiz {
-	private static double grade = 0;
-	static int numQuestions = 0;
-	private static Question[] questions = new Question[1]; //This array stores questions for the quiz
-	TrueFalseQuestion [] tfquestions;
-	
-	public Quiz() {
-	//Quiz.questions = questions;
-	//Quiz.grade = grade;
-	}
+	private double grade = 0;
+	private Question[] questions = new Question[20]; //This array stores questions for the quiz
+	private Question[] wrongQuestions = new Question[20];
 	
 //This accepts a question object and adds it to it's list of questions
-	public static void addQuestion(Question q) {
-	questions[numQuestions] = q;
-	numQuestions ++;
+	int h = 0;
+	public void addQuestion(Question q) {
+	questions[h] = q;
+	h ++;
+	
 		}
-	
-	
-	public static int getNumberQuestions(){
-		return numQuestions;
-	}
 	
 	
 //This presents each question, one by one, to the user and asks for their answer.  
 	public double giveQuiz() {
+		int wrongAnswers = 0;
 		Scanner scan = new Scanner(System.in);
+		System.out.println("This is a quiz about solar energy!");
+		System.out.println("**************************************");
+		System.out.println("press enter to continue");
+		String wait = scan.nextLine();
 		for(int i = 0; i < questions.length; i++ ) {
 			System.out.println(questions[i].getTheQuestionText());
 			String answer = scan.nextLine();
@@ -37,11 +33,28 @@ public class Quiz {
 			if (questions[i].isCorrectAnswer(answer)){
 				grade++;
 			}
-			
+			else {
+				wrongQuestions[wrongAnswers] = (questions[i]);
+				wrongAnswers++;
+			}
 		}		
-
 //Finally, it returns the score the user got.
-		System.out.println("Congrats, You got " + grade + " out of " + questions.length + " correct!");
+		int finalScore = (int) grade;
+		System.out.println("Congrats, You got " + finalScore + " out of " + questions.length + " correct!");
+		System.out.println();
+		System.out.println("**************************************");
+		System.out.println("Here's what you got wrong: ");
+		
+		for (int k= 0; k < wrongAnswers; k++) {
+		System.out.println(wrongQuestions[k].getTheQuestionText());
+		System.out.println();
+		System.out.println("The corrects answer is:  " + wrongQuestions[k].getCorrectAnswer());
+		System.out.println("press enter to continue");
+		String waitmore = scan.nextLine();
+		}
+		System.out.println();
+		System.out.println("**************************************");
+		System.out.println("That's all. Thanks for taking this quiz!");
 		scan.close();
 		return grade;
 			
